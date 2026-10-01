@@ -31,11 +31,9 @@ def test_relative_error():
 def test_summarize():
     results = pd.DataFrame([
         {"detector": "a", "abs_err": 10.0, "runtime_ms": 1.0},
-        {"detector": "a", "abs_err": np.nan, "runtime_ms": 3.0},
-    ])
-    results = pd.concat([results, pd.DataFrame([
         {"detector": "a", "abs_err": 20.0, "runtime_ms": 2.0},
-    ])], ignore_index=True)
+        {"detector": "b", "abs_err": np.nan, "runtime_ms": 3.0},
+    ])
     s = summarize(results)
     a = s[s["detector"] == "a"].iloc[0]
     b = s[s["detector"] == "b"].iloc[0]
